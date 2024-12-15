@@ -6,6 +6,10 @@ allprojects {
 }
 
 buildscript{
+      repositories {
+        google()       // Google's Maven repository
+        mavenCentral() // Maven Central repository
+    }
  dependencies{
     // It's like teeling the architect(Gradle) : "Use the lastest tools and techniques avaliable in verion 7.3.1 to build this house(App)"
     classpath 'com.android.tools.build:gradle:7.3.1'

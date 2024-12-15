@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.sanad_app"
     // to use Android 13 to compile my app. This ensures my app is compatible wuth the lastest Android features and APIs introduced in Android 13 
-    compileSdk = 33
+    compileSdk = 34
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
