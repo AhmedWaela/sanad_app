@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:sanad_app/core/assets/app_assets.dart';
-import 'package:sanad_app/core/utils/app_dimensions.dart';
+import 'package:sanad_app/core/exports/exports.dart';
 
 class TaskWidget extends StatelessWidget {
   const TaskWidget({super.key});
@@ -16,7 +13,7 @@ class TaskWidget extends StatelessWidget {
         width: AppDimensions.screenWidth,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: const Color(0xffF9FFFA),
+          color: AppColors.kSoftWhite,
           boxShadow: const [
             BoxShadow(
               color: Color(0x40000000),
@@ -34,12 +31,10 @@ class TaskWidget extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
+                    Text(
                       'Flutter Session',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xff080808),
+                      style: AppTextStyles.textStyle16W700.copyWith(
+                        color: AppColors.kJetBlack,
                       ),
                     ),
                     const SizedBox(
@@ -48,7 +43,7 @@ class TaskWidget extends StatelessWidget {
                     SvgPicture.asset(
                       AppAssets.bellSvgPath,
                       colorFilter: const ColorFilter.mode(
-                        Color(0xff717171),
+                        AppColors.kMediumGrey,
                         BlendMode.srcIn,
                       ),
                     ),
@@ -59,10 +54,7 @@ class TaskWidget extends StatelessWidget {
                 ),
                 const Text(
                   'Reminder',
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xff717171)),
+                  style: AppTextStyles.textStyle12W400,
                 ),
                 const SizedBox(
                   height: 16,
@@ -75,11 +67,7 @@ class TaskWidget extends StatelessWidget {
                     ),
                     const Text(
                       '2024-11-23',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff717171),
-                      ),
+                      style: AppTextStyles.textStyle12W400,
                     ),
                     const SizedBox(
                       width: 17,
@@ -90,11 +78,7 @@ class TaskWidget extends StatelessWidget {
                     ),
                     const Text(
                       '20:10',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff717171),
-                      ),
+                      style: AppTextStyles.textStyle12W400,
                     ),
                   ],
                 )

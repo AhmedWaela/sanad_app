@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sanad_app/core/themes/app_colors.dart';
+import 'package:sanad_app/features/tasks/presentation/views/add_reminder_view.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
   const CustomFloatingActionButton({super.key});
@@ -11,12 +13,14 @@ class CustomFloatingActionButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, AddReminderView.route);
+        },
         backgroundColor: const Color(0xff4CB050),
         child: const Icon(
           Icons.add,
           size: 40,
-          color: Color(0xffF6FFF9),
+          color: AppColors.kLigthBG,
         ),
       ),
     );

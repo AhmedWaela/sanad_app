@@ -11,21 +11,26 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: screenWidth * 0.25,
       backgroundColor: Colors.transparent,
       elevation: 0.0,
-      leading: const Padding(
-        padding: EdgeInsets.only(left: 16.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.arrow_back_ios, size: 20),
-            Text(
-              'Back',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                color: Color(0xff160700),
+      leading: Padding(
+        padding: const EdgeInsets.only(left: 16.0),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.arrow_back_ios, size: 20),
+              Text(
+                'Back',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xff160700),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       title: const Text(
