@@ -12,4 +12,8 @@ class AppTextStyles {
     fontWeight: FontWeight.w700,
     color: Color(0xff160700),
   );
+  static const TextStyle textStyle16W500 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
 }
