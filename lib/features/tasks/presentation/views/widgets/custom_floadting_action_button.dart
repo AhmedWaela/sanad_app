@@ -16,7 +16,7 @@ class CustomFloatingActionButton extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, AddReminderView.route);
         },
-        backgroundColor: const Color(0xff4CB050),
+        backgroundColor: AppColors.kPrimaryColor,
         child: const Icon(
           Icons.add,
           size: 40,

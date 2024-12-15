@@ -10,7 +10,9 @@ class ReminderView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       floatingActionButton: CustomFloatingActionButton(),
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(
+        title: 'Reminder',
+      ),
       body: ReminderViewBody(),
     );
   }
