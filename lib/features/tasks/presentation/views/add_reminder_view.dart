@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart' hide TimePickerDialog;
+import 'package:sanad_app/core/assets/app_assets.dart';
 import 'package:sanad_app/core/widgets/custom_app_bar.dart';
+import 'package:sanad_app/features/tasks/presentation/views/widgets/custom_reminder_text_feild.dart';
 import 'package:sanad_app/features/tasks/presentation/views/widgets/custom_time_picker.dart';
 
 class AddReminderView extends StatelessWidget {
@@ -28,17 +30,42 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          TimePickerDialog(
-            initialTime: TimeOfDay.now(),
-            onTimeSelected: (TimeOfDay time) {
-              setState(() {
-                timeOfDay = time;
-              });
-            },
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 28,
+            ),
+            CustomReminderTextField(
+              controller: TextEditingController(),
+              suffixIcon: AppAssets.keyboardSvgPath,
+              label: 'Title',
+            ),
+            CustomReminderTextField(
+              controller: TextEditingController(),
+              suffixIcon: AppAssets.keyboardSvgPath,
+              label: 'Description (optional)',
+            ),
+            CustomReminderTextField(
+              isReadOnly: true,
+              controller: TextEditingController(),
+              suffixIcon: AppAssets.calendarSvgPath,
+              isClikableSuffix: true,
+              bottomPadding: 0,
+              hintText: 'mm/dd/yy',
+              label: 'Enter Date',
+            ),
+            TimePickerDialog(
+              initialTime: TimeOfDay.now(),
+              onTimeSelected: (TimeOfDay time) {
+                setState(() {
+                  timeOfDay = time;
+                });
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
