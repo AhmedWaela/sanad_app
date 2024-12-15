@@ -2421,20 +2421,36 @@ class _TimePickerDialogState extends State<TimePickerDialog>
     }
   }
 
-  // void _handleOk() {
-  //   if (_entryMode.value == TimePickerEntryMode.input ||
-  //       _entryMode.value == TimePickerEntryMode.inputOnly) {
-  //     final FormState form = _formKey.currentState!;
-  //     if (!form.validate()) {
-  //       setState(() {
-  //         _autovalidateMode.value = AutovalidateMode.always;
-  //       });
-  //       return;
-  //     }
-  //     form.save();
-  //   }
-  //   Navigator.pop(context, _selectedTime.value);
-  // }
+  void _toggleEntryMode() {
+    switch (_entryMode.value) {
+      case TimePickerEntryMode.dial:
+        _handleEntryModeChanged(TimePickerEntryMode.input);
+      case TimePickerEntryMode.input:
+        _handleEntryModeChanged(TimePickerEntryMode.dial);
+      case TimePickerEntryMode.dialOnly:
+      case TimePickerEntryMode.inputOnly:
+        FlutterError('Can not change entry mode from $_entryMode');
+    }
+  }
+
+  void _handleCancel() {
+    Navigator.pop(context);
+  }
+
+  void _handleOk() {
+    if (_entryMode.value == TimePickerEntryMode.input ||
+        _entryMode.value == TimePickerEntryMode.inputOnly) {
+      final FormState form = _formKey.currentState!;
+      if (!form.validate()) {
+        setState(() {
+          _autovalidateMode.value = AutovalidateMode.always;
+        });
+        return;
+      }
+      form.save();
+    }
+    Navigator.pop(context, _selectedTime.value);
+  }
 
   Size _minDialogSize(BuildContext context, {required bool useMaterial3}) {
     final Orientation orientation =
