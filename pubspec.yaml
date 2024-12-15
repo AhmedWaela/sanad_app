@@ -34,7 +34,7 @@ dependencies:
   cloud_firestore: ^5.5.1
   cupertino_icons: ^1.0.8
   # to use native file explorer to pick single or multiple absolute file paths, with extension filtering support 
-  file_picker: ^8.1.5
+  file_picker: ^5.2.7
   # Provide authentication services for my app
   firebase_auth: ^5.3.4
   # Initailize Firebase in my app
