@@ -3,8 +3,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sanad_app/core/exports/exports.dart';
 
-class ReminderCubit extends Cubit<ReminderStates> {
-  ReminderCubit() : super(ReminderInitialState());
+class PickDateCubit extends Cubit<PickDateCubitStates> {
+  PickDateCubit() : super(PickDateCubitStates(date: null));
 
   Future<DateTime?> showDateDialog(BuildContext context) async {
     var date = await showDatePicker(
@@ -17,12 +17,12 @@ class ReminderCubit extends Cubit<ReminderStates> {
   }
 }
 
-class ReminderStates {}
+class PickDateCubitStates {
+  final DateTime? date;
 
-class ReminderInitialState extends ReminderStates {}
+  PickDateCubitStates({required this.date});
+}
 
-class DatePicked extends ReminderStates {
-  final DateTime date;
-
-  DatePicked({required this.date});
+class DatePicked extends PickDateCubitStates {
+  DatePicked({required super.date});
 }
