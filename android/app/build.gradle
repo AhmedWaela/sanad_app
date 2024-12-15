@@ -7,10 +7,16 @@ plugins {
 
 android {
     namespace = "com.example.sanad_app"
-    compileSdk = flutter.compileSdkVersion
+    // to use Android 13 to compile my app. This ensures my app is compatible wuth the lastest Android features and APIs introduced in Android 13 
+    compileSdk = 33
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
+        // Imagine you have a smartphone app that works on both new phones and old phones . Mew phones can understand tha latest feature
+        // (like advanced calendars or new ways of organizing things ),bit old phones might not understand thise features
+        // this line acts like a translator .it takes the new features and converts them into a language that old phones can understand.
+        // This way , your app works on both old and new phones without any problem
+        coreLibraryDesugaringEnabled true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -20,6 +26,9 @@ android {
     }
 
     defaultConfig {
+        // It's setting that tells Android "If the app becomes too big,split it into multple files (like multiple suitcases)
+        // so it can still run preperly".Without this setting, the app may fail to work if it gets too large
+        multiDexEnabled true
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.sanad_app"
         // You can update the following values to match your application needs.
@@ -41,4 +50,18 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies{
+    // Imagine you're trying to paly a new type of video on an older TV . The TV doesn't support this new format , so you get a special adapter
+    // that lets the TV play the video even though it's not designed for it.
+    // Similarly, some new java features (like date handling or new functions )don't work directly on older Andriod devices.
+    // By using this line , Android provides an "adapter" to make these features work on older devices without you need to chnage anything
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
+    // Imagine you have a task manager app that allows users to create and manage tasks. On tablets , users may want to use your app in split screen (multi-window )mode 
+    // where the app is displayed alongside another app. This two line can help your app detect when it's in a multi-window scenario and adjust the layout accordingly
+    implementation 'androidx.window:window:1.0.0'
+    implementation 'androidx.window:window-java:1.0.0'
+
+
 }
