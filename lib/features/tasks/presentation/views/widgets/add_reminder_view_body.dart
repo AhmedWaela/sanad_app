@@ -4,6 +4,7 @@ import 'package:sanad_app/core/assets/app_assets.dart';
 import 'package:sanad_app/core/styles/app_text_styles.dart';
 import 'package:sanad_app/core/themes/app_colors.dart';
 import 'package:sanad_app/core/utils/app_dimensions.dart';
+import 'package:sanad_app/features/tasks/data/repos/reminder_repo.dart';
 import 'package:sanad_app/features/tasks/presentation/views/widgets/custom_reminder_text_feild.dart';
 import 'package:sanad_app/features/tasks/presentation/views/widgets/custom_time_picker.dart';
 
@@ -51,9 +52,14 @@ class AddReminderViewBody extends StatelessWidget {
                     ],
                   ),
                   const Spacer(),
-                  SvgPicture.asset(
-                    AppAssets.calendarSvgPath,
-                    height: 25,
+                  GestureDetector(
+                    onTap: () async {
+                      await ReminderRepo().showDateDialog(context);
+                    },
+                    child: SvgPicture.asset(
+                      AppAssets.calendarSvgPath,
+                      height: 25,
+                    ),
                   )
                 ],
               ),
