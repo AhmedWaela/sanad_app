@@ -13,6 +13,7 @@ class SanadApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      theme: ThemeData(fontFamily: 'Lato'),
       debugShowCheckedModeBanner: false,
       initialRoute: ReminderView.route,
       routes: {

@@ -5,20 +5,38 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return AppBar(
-      leadingWidth: 200,
+      leadingWidth: screenWidth * 0.25,
       backgroundColor: Colors.transparent,
       elevation: 0.0,
-      leading: Row(
-        children: [
-          const Icon(Icons.arrow_back_ios),
-          SizedBox(
-            width: MediaQuery.sizeOf(context).width * 4 / 375,
-          ),
-          const Text('Back')
-        ],
+      leading: const Padding(
+        padding: EdgeInsets.only(left: 16.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.arrow_back_ios, size: 20),
+            Text(
+              'Back',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                color: Color(0xff160700),
+              ),
+            ),
+          ],
+        ),
       ),
-      title: const Text('Reminder'),
+      title: const Text(
+        'Reminder',
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
+          color: Color(0xff160700),
+        ),
+      ),
+      centerTitle: true,
     );
   }
 
