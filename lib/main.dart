@@ -13,6 +13,7 @@ class SanadApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: ReminderView.route,
       routes: {
         ReminderView.route: (BuildContext context) => const ReminderView()
