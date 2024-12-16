@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PickTimeCubit extends Cubit<PickTimeStates> {
-  PickTimeCubit() : super(PickTimeStates(time: TimeOfDay.now()));
+  PickTimeCubit()
+      : super(PickTimeStates(time: TimeOfDay.fromDateTime(DateTime.now())));
 
-  void pickTime(TimeOfDay time) {
+  pickTime(TimeOfDay time) {
     emit(TimePicked(time: time));
   }
 }

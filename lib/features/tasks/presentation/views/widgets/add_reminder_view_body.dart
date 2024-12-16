@@ -7,6 +7,7 @@ import 'package:sanad_app/core/styles/app_text_styles.dart';
 import 'package:sanad_app/core/themes/app_colors.dart';
 import 'package:sanad_app/core/utils/app_dimensions.dart';
 import 'package:sanad_app/features/tasks/presentation/manager/pick_date_cubit.dart';
+import 'package:sanad_app/features/tasks/presentation/manager/pick_time_cubit.dart';
 import 'package:sanad_app/features/tasks/presentation/views/widgets/custom_reminder_text_feild.dart';
 import 'package:sanad_app/features/tasks/presentation/views/widgets/custom_time_picker.dart';
 
@@ -19,6 +20,9 @@ class AddReminderViewBody extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => PickDateCubit(),
+        ),
+        BlocProvider(
+          create: (context) => PickTimeCubit(),
         )
       ],
       child: Builder(builder: (context) {
@@ -86,7 +90,8 @@ class AddReminderViewBody extends StatelessWidget {
                 ),
                 TimePickerDialog(
                   initialTime: TimeOfDay.now(),
-                  onTimeSelected: (TimeOfDay time) {},
+                  onTimeSelected:
+                      BlocProvider.of<PickTimeCubit>(context).pickTime,
                 ),
                 Container(
                   margin: const EdgeInsets.only(bottom: 72),
@@ -102,7 +107,7 @@ class AddReminderViewBody extends StatelessWidget {
                           .copyWith(color: Colors.white),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
