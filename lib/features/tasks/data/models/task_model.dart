@@ -5,7 +5,7 @@ class TaskModel {
   final String? description;
   final DateTime date;
   final TimeOfDay time;
-  final String id;
+  final int id;
 
   TaskModel({
     required this.title,

@@ -2569,7 +2569,7 @@ class _TimePickerDialogState extends State<TimePickerDialog>
             tapTargetSizeOffset;
     return Dialog(
       shape: shape,
-      // elevation: 0.0,
+      elevation: 0.0,
       backgroundColor: Colors.transparent,
       insetPadding: EdgeInsets.symmetric(
         horizontal: 16,

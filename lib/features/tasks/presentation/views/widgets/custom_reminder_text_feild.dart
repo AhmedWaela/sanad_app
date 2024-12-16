@@ -1,6 +1,6 @@
 import 'package:sanad_app/core/exports/exports.dart';
 
-class CustomReminderTextField extends StatelessWidget {
+class CustomReminderTextField extends StatefulWidget {
   const CustomReminderTextField({
     super.key,
     required this.label,
@@ -8,6 +8,14 @@ class CustomReminderTextField extends StatelessWidget {
   });
   final String label;
   final TextEditingController controller;
+
+  @override
+  State<CustomReminderTextField> createState() =>
+      _CustomReminderTextFieldState();
+}
+
+class _CustomReminderTextFieldState extends State<CustomReminderTextField> {
+  TextDirection textDecoration = TextDirection.ltr;
   @override
   Widget build(BuildContext context) {
     const underlineInputBorder = UnderlineInputBorder(
@@ -36,7 +44,7 @@ class CustomReminderTextField extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                label,
+                widget.label,
                 style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
@@ -53,12 +61,24 @@ class CustomReminderTextField extends StatelessWidget {
           ),
           Expanded(
             child: TextField(
+              textDirection: textDecoration,
+              onChanged: (value) {
+                if (value.startsWith(RegExp(r'[\u0600-\u06FF]'))) {
+                  setState(() {
+                    textDecoration = TextDirection.rtl;
+                  });
+                } else {
+                  setState(() {
+                    textDecoration = TextDirection.ltr;
+                  });
+                }
+              },
               style: const TextStyle(fontSize: 12, color: Colors.black),
-              controller: controller,
+              controller: widget.controller,
               cursorHeight: 20,
               cursorColor: AppColors.kPrimaryColor,
               decoration: const InputDecoration(
-                contentPadding: EdgeInsets.only(bottom: 15),
+                contentPadding: EdgeInsets.only(bottom: 15, right: 30),
                 hintStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
                 focusedBorder: underlineInputBorder,
                 enabledBorder: underlineInputBorder,
